@@ -9,54 +9,22 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
-
-    public void changeLabel(View view) {
-        TextView tv = (TextView)findViewById(R.id.myTextView);
-        if(tv.getText().equals("Change Me!")) {
-            tv.setText("Changed!!");
-        } else {
-            tv.setText("Change Me!");
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        WebView  myWebView = (WebView)findViewById(R.id.webView1);
+        // 標準ブラウザをキャンセル
+        myWebView.setWebViewClient(new WebViewClient());
+        // アプリ起動時に読み込むURL
+        // myWebView.loadUrl("https://github.com/S-G-P/android_app");
+        // ローカルでアプリ立ち上げる場合はこっち
+        myWebView.loadUrl("http://10.0.2.2:8080/");
     }
 }
