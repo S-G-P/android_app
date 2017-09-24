@@ -1,4 +1,5 @@
 # android_app
 
 Androidによるネイティヴアプリを作成する
+
 目標はとりあえずWebViewを使用してspring bootで作成したアプリと繋げられればOK
